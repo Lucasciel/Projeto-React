@@ -22,3 +22,36 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 50px 22px;
 }
+
+.project-card .thumb {
+    background-position: center;
+    background-size: cover;
+    border-radius: 37px;
+    height: 330px;
+    width: 100%;
+}
+
+.project-card h3 {
+    font-size: 25px;
+    margin: 20px 0 0 0;
+}
+
+.project-card p {
+    font-size: 18px;
+    margin: 20px 0 0 0;
+}
+
+@media (max-width: 768px) {
+    
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 50px 22px;
+    }
+}
+
+@media (max-width: 568px) {
+    .projects-grid {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 50px 22px;
+    }
+}

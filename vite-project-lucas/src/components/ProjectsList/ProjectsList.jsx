@@ -1,5 +1,4 @@
 import './ProjectsList.css'
-
 //ASSETS
 import LikeWhite from '../../assets/like-white.svg'
 import LikeBlack from '../../assets/like-black.svg'

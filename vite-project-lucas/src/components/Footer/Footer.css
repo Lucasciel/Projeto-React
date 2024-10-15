@@ -22,7 +22,7 @@
     margin: 0 0 25px 0;
 }
 
-footer h3, .footer-logo {
+ .footer-col h3, .footer-logo {
     font-size: 25px;
     margin: 0 0 25px 0;
 }
@@ -47,7 +47,7 @@ footer .social-lins a {
 }
 
 .footer-copy {
-    margin: 155px 0 50px 0;
+    margin: 70px 0 50px 0;
 }
 
 .footer-copy .langs-area {
@@ -68,5 +68,14 @@ footer .social-lins a {
     .footer-logo-col {
         max-width: 100%;
     }
+    .footer-col-2 {
+        gap: 20px;
+    }
     
+}
+
+@media (max-width: 425px) {
+    .footer-col-2 {
+        flex-direction: column;
+    }
 }

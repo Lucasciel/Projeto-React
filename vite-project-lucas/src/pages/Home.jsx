@@ -12,7 +12,6 @@ export default function Home() {
         <Header/>
 
 
-        <Button buttonStyle={'primary'} arrow>olá</Button>
 
         <Banner image="about.svg" title='Home'></Banner>
         
