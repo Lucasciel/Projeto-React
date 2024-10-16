@@ -5,6 +5,8 @@
     border-radius: 70px;
     height: 700px;
     padding: 50px;
+    margin: 0 10%;
+    max-width: 1542px;
 }
 
 .hero h1 {
@@ -24,6 +26,9 @@
 
 @media (max-width: 568px) {
     .hero h1 {
-        font-size: 40px;
+        font-size: 25px;
+    }
+    .hero {
+        margin: 0;
     }
 }

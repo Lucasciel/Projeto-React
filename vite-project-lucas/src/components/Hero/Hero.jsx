@@ -1,6 +1,7 @@
 import {Link} from 'react-router-dom'
 import './Hero.css'
-import Button from '../button/button'
+import Button from '../Button/Button'
+import escada from '../../assets/escada.svg'
 
 export default function Hero(props) {
     return(
@@ -13,6 +14,8 @@ export default function Hero(props) {
                         Get Started
                     </Button>
                 </Link>
+
+                
                 
             </div>
 
