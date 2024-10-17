@@ -8,15 +8,16 @@ import ProjectsList from '../components/ProjectsList/ProjectsList'
 export default function Home() {
     return (
         <>
-            <Header />
 
-                <Hero></Hero>
+            <Header />
+            <Hero />
+
 
 
             <div className='container'>
-            <ProjectsList></ProjectsList>
+                <ProjectsList></ProjectsList>
             </div>
-            
+
 
             <Footer />
         </>

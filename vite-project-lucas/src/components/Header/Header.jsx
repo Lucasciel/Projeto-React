@@ -28,7 +28,7 @@ export default function Header() {
                         <Button buttonStyle='unstyled' className='mobile-menu close-btn'  onClick={toggleMenu}>
                             X
                         </Button>
-                        <ul className='d-flex'>
+                        <ul className='d-flex ' >
                             <li><Link to='/'>Home</Link></li>
                             <li><Link to='/about'>About us</Link></li>
                             <li><Link to='/projects'>Projects</Link></li>
