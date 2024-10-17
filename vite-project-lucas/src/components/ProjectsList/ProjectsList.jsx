@@ -34,6 +34,7 @@ export default function ProjectsList(props) {
 
             <div className='projects-grid'>
                 {
+                    projects?
                     projects.map((project) => ( //pega cada objeto da lista
                         <div key={project.id} className='project-card d-flex jc-center al-center fd-column'>
                             <div 
@@ -45,6 +46,7 @@ export default function ProjectsList(props) {
                             <img src={LikeBlack} />
                         </div>
                     ))
+                    : null
                 }
                 
 
