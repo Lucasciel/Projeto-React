@@ -4,9 +4,19 @@ import { useState, useEffect } from 'react'
 //COMPONENTS
 import Button from '../Button/Button'
 
-export default function ContactForm() {
+//Context
+import { useContext } from 'react'
+import { AppContext } from '../../contexts/AppContext'
 
-    //Campo para guardar dados do usuário organizado
+
+export default function ContactForm() {
+    //Funcionalidade para texto de api
+    const appContext = useContext(AppContext)
+
+    //---------------------------------------------
+
+    //FUNCIONALIDADE VALIDAÇÃO E ENVIO DE FORMULARIO PARA EMAIL USANDO API W3FORMS
+    //1 Campo para guardar dados do usuário organizado
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -16,13 +26,17 @@ export default function ContactForm() {
     //O botão só se ativa quando for true
     //só será true se a validação (isValid) for true
     const [isFormValid, setIsFormValid] = useState(false) 
-    const [formSubmitLoading, setFormSubmitLoading]= useState(false)
-    const [formSubmitted, setFormSubmitted] = useState(false)
+
+    const [formSubmitLoading, setFormSubmitLoading]= useState(false)//trava o botão enquanto estiver sendo enviado
+    const [formSubmitted, setFormSubmitted] = useState(false) //se for enviado com sucesso
     
+
+    //ao dar submit no formulario:
     const handleSubmit = async (e) => { // (e) = eventos como post, recarrega pagina...
-        e.preventDefault()              // pega esse (e) e tira os eventos
-        if(isFormValid){
-            setFormSubmitLoading(true)
+        e.preventDefault()              // pega esse (e) e tira os eventos(tira recarregar pagina)
+        
+        if(isFormValid){ //se formulário for válido, transforma em json e envia 'POST'
+            setFormSubmitLoading(true) //enquanto estiver enviando, botao desable=true
             try{
                 const response = await fetch('https://api.web3forms.com/submit', {
                     method:'POST',
@@ -67,7 +81,7 @@ export default function ContactForm() {
     },[formData])
 
 
-    //manda o valor do formulario para variavel objeto
+    //1 manda o valor do formulario para variavel objeto
     const handleChange = (e) => {
         const {name,value} = e.target; // = e.target.name e.target.value
         setFormData({
@@ -79,15 +93,16 @@ export default function ContactForm() {
     return (
         <div className='container'>
             <div className='contact-form d-flex fd-column al-center'>
-                <h2>We love meeting new people and helping them.</h2>
-                <form onSubmit={handleSubmit}>        {/*evento de submit desativado */}
+                <h2>{appContext.languages[appContext.language].contact.title}</h2>
+
+                <form onSubmit={handleSubmit}>        {/*evento de submit*/}
                     <div className='d-flex form-group'>
                         <input
                             className='form-input'
                             type="text"
                             name="name"
                             id="name"
-                            placeholder='Name*'
+                            placeholder={appContext.languages[appContext.language].contact.pl1}
                             onChange={handleChange} /> {/*evento de mudança no valor no form */}
 
 
@@ -96,7 +111,7 @@ export default function ContactForm() {
                             type="email"
                             name="email"
                             id="email"
-                            placeholder='Email*'
+                            placeholder={appContext.languages[appContext.language].contact.pl2}
                             onChange={handleChange}
                         />
                     </div>
@@ -105,7 +120,7 @@ export default function ContactForm() {
                             className='form-input'
                             name="message"
                             id="message"
-                            placeholder='Mensagem*'
+                            placeholder={appContext.languages[appContext.language].contact.pl3}
                             rows='4'
                             onChange={handleChange}
                             ></textarea>
@@ -114,7 +129,7 @@ export default function ContactForm() {
                     <div className='al-center d-flex form-group jc-end'>
                         {formSubmitted && <p className='text-primary'>Sucesso</p>}
                         <Button type='submit' buttonStyle='primary' disabled={!isFormValid || formSubmitLoading}>
-                            ENVIAR
+                        {appContext.languages[appContext.language].general.send}
                         </Button>
                     </div>
 

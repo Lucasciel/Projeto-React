@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom' //mudar url
 import { useState } from 'react'
 import './Header.css'
 
@@ -8,11 +8,19 @@ import Logo from '../../assets/dnc-logo.svg'
 //COMPONENTS
 import Button from '../Button/Button'
 
-export default function Header() {
+//Context
+import { useContext } from 'react'
+import { AppContext } from '../../contexts/AppContext'
 
+export default function Header() {
+    //menu mobile:
     const [isOpen, setIsOpen] = useState(false) //apenas armazena false (temos 2 css, apenas trocaremos os estilos)
-    const toggleMenu = () => {setIsOpen(!isOpen)} //troca o valor false para true ou true para false se algo acontecer
-    
+    const toggleMenu = () => { setIsOpen(!isOpen) } //troca o valor false para true ou true para false se algo acontecer
+
+    //textoApi useContext ()
+    const appContext = useContext(AppContext)
+
+
     return (
         <header>
             <div className='container'>
@@ -24,15 +32,15 @@ export default function Header() {
                         </Button>
                     </div>
 
-                    <nav className={`${isOpen? 'open' : ''}`}>  
-                        <Button buttonStyle='unstyled' className='mobile-menu close-btn'  onClick={toggleMenu}>
+                    <nav className={`${isOpen ? 'open' : ''}`}>
+                        <Button buttonStyle='unstyled' className='mobile-menu close-btn' onClick={toggleMenu}>
                             X
                         </Button>
                         <ul className='d-flex ' >
-                            <li><Link to='/'>Home</Link></li>
-                            <li><Link to='/about'>About us</Link></li>
-                            <li><Link to='/projects'>Projects</Link></li>
-                            <li><Link to='/contact'>Contact</Link></li>
+                            <li><Link to='/'>{appContext.languages[appContext.language].menu.home}</Link></li>
+                            <li><Link to='/about'>{appContext.languages[appContext.language].menu.about}</Link></li>
+                            <li><Link to='/projects'>{appContext.languages[appContext.language].menu.projects}</Link></li>
+                            <li><Link to='/contact'>{appContext.languages[appContext.language].menu.contact}</Link></li>
                         </ul>
                     </nav>
                 </div>

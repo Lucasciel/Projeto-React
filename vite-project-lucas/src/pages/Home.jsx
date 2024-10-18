@@ -5,7 +5,9 @@ import Banner from '../components/Banner/Banner'
 import Hero from '../components/Hero/Hero'
 import ProjectsList from '../components/ProjectsList/ProjectsList'
 
+
 export default function Home() {
+
     return (
         <>
 

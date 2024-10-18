@@ -8,9 +8,12 @@ import LikeBlack from '../../assets/like-black.svg'
 import { useState, useEffect } from 'react'
 import { getApiData } from '../../services/apiServices' //dados da api em json
 
+//Context
+import { useContext } from 'react'
+import { AppContext } from '../../contexts/AppContext'
 
 export default function ProjectsList(props) {
-
+    //funcionalidade para envio de formulário
     const [projects, setProjects] = useState([])  //vai guardar os dados da api em json
 
     useEffect(() => {
@@ -25,11 +28,15 @@ export default function ProjectsList(props) {
         fetchData() //ativa 1 vez
     }, []) //[]= faz com que useEfect seja acionado 1 vez apenas
 
+
+    //Funcionalidade para texto de api
+    const appContext = useContext(AppContext)
+
     return (
         <div className='projects-section'>
             <div className='projects-hero'>
-                <h2>Follow Our Projects</h2>
-                <p>It is a long established fact that a reader will be distracted by the of readable content of page  lookings at its layouts  points.</p>
+                <h2>{appContext.languages[appContext.language].projects.title}</h2>
+                <p>{appContext.languages[appContext.language].projects.subtitle}</p>
             </div>
 
             <div className='projects-grid'>
