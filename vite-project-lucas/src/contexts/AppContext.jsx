@@ -8,8 +8,11 @@ import {getApiData} from '../services/apiServices'
 export const AppContext = createContext()//AppContext será usado para dar acesso deseus componentes para outros
 
 export const AppProvider = ({children}) => {
-    const [language, setLanguage] = useState('br') //o botão muda a linguagem em todos os componentes
-    const [languages, setLanguages] = useState() //aqui é o texto todo da api en e br
+    //localstorage salvar idioma escolhido
+    const savedLanguage = localStorage.getItem('lang')
+
+    const [language, setLanguage] = useState(savedLanguage ?? 'br') //o botão muda a linguagem em todos os componentes
+    const [languages, setLanguages] = useState({}) //aqui é o texto todo da api en e br
     const [loading, setLoading] = useState(true) //se os dados estao carregando ou nao
 
     useEffect(() => {
@@ -28,7 +31,13 @@ export const AppProvider = ({children}) => {
 
         //usamos a função que pega dados da api e guarda no languages
         fetchLanguages()
+
     }, [])
+
+
+    useEffect(()=> {
+        localStorage.setItem('lang', language)
+    }, [language])
 
 
     //1 AppProvider se torna um provedor, os valores compartilhados são {{...}}

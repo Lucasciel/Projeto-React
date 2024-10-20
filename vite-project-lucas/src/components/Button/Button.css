@@ -11,7 +11,9 @@
 }
 
 /*PRIMARY*/
-
+.button.disable{
+    background:transparent;
+}
 .button.primary {
     background-color:#0C70F2;
     color: white;

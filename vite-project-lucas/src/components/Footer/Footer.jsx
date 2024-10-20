@@ -74,11 +74,11 @@ export default function Footer() {
                 <div className='d-flex jc-space-between footer-copy al-center'>
                     <p className='grey-color'>Copyright © DNC - 2024</p>
                     <div className='langs-area d-flex'>
-                        <Button buttonStyle='unstyled' onClick={()=> changeLanguage('br')}>
+                        <Button buttonStyle='disable' onClick={()=> changeLanguage('br')}>
                             <img src={brazilIcon} alt="" />
                         </Button>
                             
-                        <Button buttonStyle='unstyled'  onClick={()=> changeLanguage('en')}>
+                        <Button buttonStyle='disable'  onClick={()=> changeLanguage('en')}>
                             <img src={usaIcon} alt="" />
                         </Button>
                         
